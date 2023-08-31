@@ -1,16 +1,16 @@
 import styles from './productcard.module.css'
 import Image from 'next/image';
 
-export default function ProductCard () {
+export default function ProductCard ({hospitalName, imgSrc} : {hospitalName: string, imgSrc: string}) {
     return (
-        <div className={styles.card}>
-            <div className={styles.cardimg}>
-                <Image src={'/img/cardimg1.jpg'}
+        <div className='w-1/5 h-[300px] rounded-lg shadow-lg'>
+            <div className='w-full h-[70%] relative rounded-t-lg'>
+                <Image src={imgSrc}
                 alt='Product Picture'
                 fill={true}
-                objectFit='cover'/>
+                className='object-cover rounded-t-lg'/>
             </div>
-            <div className={styles.cardtext}>วัคซีน (Vaccine) คือสารชนิดหนึ่งที่ฉีดเข้าไปร่างกาย เพื่อสร้างภูมิคุ้มกันโรคต่างๆ</div>
+            <div className='w-full h-[30%] p-[10px]'>{hospitalName}</div>
         </div>
     )
 }

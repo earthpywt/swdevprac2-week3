@@ -36,6 +36,9 @@ export default function ProductCard({
                         onCompare(hospitalName, newValue);
                     }
                 }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
             />
         </InteractiveCard>
     );

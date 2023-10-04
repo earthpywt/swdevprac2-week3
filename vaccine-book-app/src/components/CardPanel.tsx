@@ -1,6 +1,7 @@
 "use client";
 import { useReducer } from "react";
 import ProductCard from "./ProductCard";
+import Link from "next/link";
 
 export default function CardPanel() {
     const compareReducer = (
@@ -27,6 +28,16 @@ export default function CardPanel() {
         new Map<string, number>()
     );
 
+    const mockHospitalRepo = [
+        { hid: "001", name: "Chulalongkorn Hospital", image: "/img/chula.jpg" },
+        { hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg" },
+        {
+            hid: "003",
+            name: "Thammasat University Hospital",
+            image: "/img/thammasat.jpg",
+        },
+    ];
+
     return (
         <div>
             <div
@@ -39,39 +50,24 @@ export default function CardPanel() {
                     alignContent: "space-around",
                 }}
             >
-                <ProductCard
-                    hospitalName="Chulalongkorn Hospital"
-                    imgSrc="/img/chula.jpg"
-                    onCompare={(name: string, value: number) =>
-                        dispatchCompare({
-                            type: "add",
-                            hospitalName: name,
-                            hospitalRating: value,
-                        })
-                    }
-                />
-                <ProductCard
-                    hospitalName="Rajavithi Hospital"
-                    imgSrc="/img/rajavithi.jpg"
-                    onCompare={(name: string, value: number) =>
-                        dispatchCompare({
-                            type: "add",
-                            hospitalName: name,
-                            hospitalRating: value,
-                        })
-                    }
-                />
-                <ProductCard
-                    hospitalName="Thammasat University Hospital"
-                    imgSrc="/img/thammasat.jpg"
-                    onCompare={(name: string, value: number) =>
-                        dispatchCompare({
-                            type: "add",
-                            hospitalName: name,
-                            hospitalRating: value,
-                        })
-                    }
-                />
+                {mockHospitalRepo.map((hospitalItem) => (
+                    <Link
+                        href={`hospital/${hospitalItem.hid}`}
+                        className="w-1/5"
+                    >
+                        <ProductCard
+                            hospitalName={hospitalItem.name}
+                            imgSrc={hospitalItem.image}
+                            onCompare={(name: string, value: number) =>
+                                dispatchCompare({
+                                    type: "add",
+                                    hospitalName: name,
+                                    hospitalRating: value,
+                                })
+                            }
+                        />
+                    </Link>
+                ))}
             </div>
             <div className="w-full text-xl font-medium">Hospital Rating</div>
             {Array.from(compareMap).map(([name, rating]) => (

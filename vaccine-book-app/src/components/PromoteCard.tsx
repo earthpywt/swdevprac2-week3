@@ -7,7 +7,6 @@ import { useWindowListener } from "@/hooks/useWindowListener";
 export function PromoteCard() {
     const [playing, setPlaying] = useState(true);
     const [rating, setRating] = useState(0);
-    const [pointerPosition, setPointerPosition] = useState({ x: 0, y: 0 });
 
     useWindowListener("contextmenu", (e) => {
         e.preventDefault();
@@ -22,8 +21,8 @@ export function PromoteCard() {
                 isPlaying={playing}
                 vdoSrc="/video/getvaccine.mp4"
             ></VideoPlayer>
-            <div className="m-5">
-                Thailand Natural ({pointerPosition.x}, {pointerPosition.y})
+            <div className="m-5 text-black">
+                Get your vaccine today.
                 <button
                     className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
             shadow-sm text-white"

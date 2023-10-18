@@ -1,8 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { useEffect } from "react";
-import { useState } from "react";
-//import { useWindowListener } from "@/hooks/useWindowListener";
+
 export function VideoPlayer({
     vdoSrc,
     isPlaying,
@@ -11,12 +10,8 @@ export function VideoPlayer({
     isPlaying: boolean;
 }) {
     const vdoRef = useRef<HTMLVideoElement>(null);
-    // useWindowListener("resize", (e) =>
-    //     alert("window width is " + (e.target as Window).innerWidth)
-    // );
 
     useEffect(() => {
-        //alert("width is" + vdoRef.current?.videoWidth);
         if (isPlaying) {
             vdoRef.current?.play();
         } else {

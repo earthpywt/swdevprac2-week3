@@ -1,4 +1,4 @@
-import styles from "./productcard.module.css";
+"use client";
 import Image from "next/image";
 import InteractiveCard from "./InteractiveCard";
 import { Rating } from "@mui/material";
@@ -11,7 +11,7 @@ export default function ProductCard({
 }: {
     hospitalName: string;
     imgSrc: string;
-    onCompare: Function;
+    onCompare?: Function;
 }) {
     const [value, setValue] = useState(0);
     return (
@@ -27,19 +27,23 @@ export default function ProductCard({
             <div className="w-full h-[30%] p-[10px] text-black">
                 {hospitalName}
             </div>
-            <Rating
-                precision={0.5}
-                value={value}
-                onChange={(event, newValue) => {
-                    if (newValue !== null) {
-                        setValue(newValue);
-                        onCompare(hospitalName, newValue);
-                    }
-                }}
-                onClick={(e) => {
-                    e.stopPropagation();
-                }}
-            />
+            {onCompare ? (
+                <Rating
+                    precision={0.5}
+                    value={value}
+                    onChange={(event, newValue) => {
+                        if (newValue !== null) {
+                            setValue(newValue);
+                            onCompare(hospitalName, newValue);
+                        }
+                    }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
+                />
+            ) : (
+                ""
+            )}
         </InteractiveCard>
     );
 }

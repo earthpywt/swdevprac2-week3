@@ -9,20 +9,21 @@ export default async function TopMenu() {
     const session = await getServerSession(authOptions);
     return (
         <div className="h-[50px] bg-white fixed top-0 inset-x-0 z-30 border-y-1 border-gray-400 border-solid flex flex-row justify-end">
-            <div>
+            <div className="flex flex-row absolute left-0 h-full">
                 {session ? (
                     <Link href="/api/auth/signout">
-                        <div className="flex items-center absolute left-0 h-full px-2 text-cyan-600 text-sm">
+                        <div className="flex items-center  h-full px-2 text-cyan-600 text-sm">
                             Sign-Out of {session.user?.name}
                         </div>
                     </Link>
                 ) : (
                     <Link href="/api/auth/signin">
-                        <div className="flex items-center absolute left-0 h-full px-2 text-cyan-600 text-sm">
+                        <div className="flex items-center  h-full px-2 text-cyan-600 text-sm">
                             Sign-In
                         </div>
                     </Link>
                 )}
+                <TopMenuItem title="My Booking" pageRef="/mybooking" />
             </div>
 
             <TopMenuItem title="Booking" pageRef="/booking" />

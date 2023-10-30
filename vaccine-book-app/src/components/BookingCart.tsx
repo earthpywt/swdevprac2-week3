@@ -8,6 +8,14 @@ import { removeReservation } from "@/redux/features/bookSlice";
 export default function ReservationCart() {
     const bookItems = useAppSelector((state) => state.bookSlice.bookItems);
     const dispatch = useDispatch<AppDispatch>();
+
+    if (bookItems.length === 0) {
+        return (
+            <div className="flex justify-center items-center h-full py-10">
+                No vaccine booking
+            </div>
+        );
+    }
     return (
         <>
             {bookItems.map((bookingItem) => (
@@ -20,13 +28,6 @@ export default function ReservationCart() {
                         Pick-Up {bookingItem.vaccineDate} from{" "}
                         {bookingItem.hospital}
                     </div>
-                    {/* <div className="text-sm">
-                        Return {bookingItem.returnDate} to{" "}
-                        {bookingItem.returnLocation}
-                    </div> */}
-                    {/* <div className="text-md">
-                        Duration: {bookingItem.numOfDays}
-                    </div> */}
 
                     <button
                         className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 

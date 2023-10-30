@@ -1,7 +1,7 @@
 "use client";
 import LocationDateReserve from "@/components/LocationDateReserve";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+// import { getServerSession } from "next-auth";
 import getUserProfile from "@/libs/getUserProfile";
 import { useState, useEffect } from "react";
 import dayjs, { Dayjs } from "dayjs";

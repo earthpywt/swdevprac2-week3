@@ -15,7 +15,7 @@ export function PromoteCard() {
     return (
         <div
             className="w-[80%} shadow-lg mx-[10%] my-10 p-22 rounded-lg bg-gray-200 
-        flex flex-row"
+        flex flex-row promote-card"
         >
             <VideoPlayer
                 isPlaying={playing}
